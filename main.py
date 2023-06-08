@@ -1,8 +1,5 @@
-import math
 import numpy
 import matplotlib.pyplot as plt
-import os
-
 
 class Point:
     def __init__(self, x, y, dx=None, ddx=None):
@@ -140,4 +137,4 @@ def data_input():
     plot_visualization(x_values, y_values, points)
 
 
-arr = data_input()
+# arr = data_input()
