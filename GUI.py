@@ -24,9 +24,9 @@ def input_point_value():
     dx = dpg.get_value(input_DX)
     ddx = dpg.get_value(input_DDX)
 
-    if dx == "-":
+    if dx == "":
         dx = None
-    if ddx == "-":
+    if ddx == "":
         ddx = None
 
     try:
@@ -108,7 +108,7 @@ def plot_visualization():
 def input_data_button():
     global input_count
     try:
-        if int(dpg.get_value(input_data)) >= 1:
+        if int(dpg.get_value(input_data)) > 1:
             input_count = int(dpg.get_value(input_data))
             # dpg.hide_item(input_data)
             # dpg.hide_item(text_count)
@@ -125,25 +125,25 @@ def input_data_button():
 
 
 
-with dpg.window(label="Tutorial", tag="Primary Window", width=970, height=475):
+with dpg.window(label="Hermit Interpolation", tag="Primary Window", width=970, height=475):
     # user data set when button is created
     text_count = dpg.add_text("Enter the number of points:")
-    input_data = dpg.add_input_text(width=200)
+    input_data = dpg.add_input_text(width=250)
 
     text_X = dpg.add_text(
         f"Enter the x value for point {i + 1}:",
         show=False)
-    input_X = dpg.add_input_text(show=False, width=200)
+    input_X = dpg.add_input_text(show=False, width=250)
     text_Y = dpg.add_text(f"Enter the y value for point {i + 1}:", show=False)
-    input_Y = dpg.add_input_text(show=False, width=200)
+    input_Y = dpg.add_input_text(show=False, width=250)
     text_DX = dpg.add_text(
         f"Enter the dx value for {i + 1}:",
         show=False)
-    input_DX = dpg.add_input_text(show=False, width=200)
+    input_DX = dpg.add_input_text(show=False, width=250)
     text_DDX = dpg.add_text(
         f"Enter the ddx value of {i + 1}:",
         show=False)
-    input_DDX = dpg.add_input_text(show=False, width=200)
+    input_DDX = dpg.add_input_text(show=False, width=250)
 
     with dpg.group(horizontal=True):
         start_button = dpg.add_button(label="Ok", callback=input_data_button, user_data="Some Data", width=96, height=50)
@@ -155,9 +155,9 @@ with dpg.window(label="Tutorial", tag="Primary Window", width=970, height=475):
         f"\n less than the value of x for n - 1 point."
         f"\n\n For one point, only one derivative can "
         f"\n be determined, i.e. either the derivative "
-        f"\n of the first or second order. \n\n Enter -,"
-        f"if you don`t want enter derivative "
-        f"\n value",
+        f"\n of the first or second order. \n\n "
+        f"Do not enter any value if you do not want"
+        f"\n to define derivatives.",
         show=False, color=(255, 255, 0))
 
     end_items = [text_X, input_X, text_Y, input_Y, text_DX, input_DX, text_DDX, input_DDX, text_hint]
